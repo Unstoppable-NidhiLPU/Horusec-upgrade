@@ -16,6 +16,6 @@ jobs:
       
     - name: get horusec cli
       run: |
-        curl https://github.com/ZupIT/horusec/releases/download/v2.9.0-beta.3/horusec_linux_amd64 -o horusec 
+        curl https://github.com/ZupIT/horusec/releases/download/v2.9.0-beta.3/horusec_linux_amd64 -o horusec && ls -la
     - name: Run Horusec Security Scan
-      run: horusec generate && horusec start --config-file-path=./horusec-config.json --project-path=./
+      run: ./horusec generate && horusec start --config-file-path=./horusec-config.json --project-path=./
