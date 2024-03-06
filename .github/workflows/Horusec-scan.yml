@@ -1,19 +1,17 @@
 name: Horusec Security Scan
 
 on: [push]
-#the Event that triggers the workflow .
 
-
-
-jobs: #part that gets executed everytime na event occurs
+jobs:
   security_scan:
     runs-on: ubuntu-latest
     steps:
     - name: Check out code
       uses: actions/checkout@v3
-      #to access the repository 
       
     - name: Run Horusec Security Scan
-      uses: docker://horuszup/horusec-cli:latest
-      with:
-        args: start -p="./" -o="json" -O="./horusec-result.json"
+      run: |
+        docker run --rm \
+          -v ${{ github.workspace }}:/src \
+          horuszup/horusec-cli:latest \
+          start -p /src -o="json" -O="./horusec-result.json"
