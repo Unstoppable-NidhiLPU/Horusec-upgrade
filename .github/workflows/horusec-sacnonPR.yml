@@ -19,4 +19,4 @@ jobs:
         docker run --rm \
           -v ${{ github.workspace }}:/src \
           horuszup/horusec-cli:latest \
-          start -p /src -o="json" -O="./horusec-result.json"
+          start -o="json" -O="./horusec-result.json"
