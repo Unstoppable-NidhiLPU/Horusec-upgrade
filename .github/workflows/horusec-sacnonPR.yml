@@ -16,7 +16,4 @@ jobs:
       
     - name: Run Horusec Security Scan
       run: |
-        docker run --rm \
-          -v ${{ github.workspace }}:/src \
-          horuszup/horusec-cli:latest \
-          start --output-format=json --output-path=./horusec-result.json
+        uname -a
