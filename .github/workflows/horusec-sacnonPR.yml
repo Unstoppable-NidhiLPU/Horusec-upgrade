@@ -1,0 +1,22 @@
+name: Horusec Security Scan
+
+on:
+  push:
+    branches:
+      - main
+#triggering the event      
+
+jobs:
+  security_scan:
+    runs-on: ubuntu-latest
+    #the part taht gets executed everytime an event occurs
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v3
+      
+    - name: Run Horusec Security Scan
+      run: |
+        docker run --rm \
+          -v ${{ github.workspace }}:/src \
+          horuszup/horusec-cli:latest \
+          start -p /src -o="json" -O="./horusec-result.json"
