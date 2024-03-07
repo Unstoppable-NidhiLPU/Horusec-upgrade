@@ -11,12 +11,13 @@
     runs-on: ubuntu-latest  #runner
     #the part that gets executed everytime an event occurs
     steps:
-    - name: Check 
-      run: uname -m 
+   
     - name: Check out code
       uses: actions/checkout@v3
       
     - name: get horusec cli
       run: |
+       https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s v2.9.0-beta.3
+
         
-    #
+    
