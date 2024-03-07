@@ -1,25 +1,31 @@
 name: Horusec Security Scan
 
-on:
+# Defines when the action will run. 
+on: 
   push:
+    # Trigger the workflow on push events to any branch
     branches:
-      - '*' # Trigger on push to any branch
+      - '**'
 
 jobs:
-  security_scan:
+  # This workflow contains a single job called "scan"
+  scan:
+    # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
+    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Check out code
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Checkout code
         uses: actions/checkout@v3
-        
-      - name: Docker version
-        run:
-          docker --version
-          docker info 
-          
-      - name: Get Horusec CLI
-        run: |
-         curl -fsSL  //https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest-beta  
 
-      
+      # Runs a single command using the runners shell
+      - name: Setup Horusec CLI
+        run: |
+          curl -fsSL https://horusec.io/bin/install.sh | bash
+
+      # Runs the Horusec security scan
+      - name: Run Horusec Security Scan
+        run: |
+          horusec start -p="./" -e="true"
+v
