@@ -17,8 +17,7 @@
       
     - name: get horusec cli
       run: |
-       curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s v2.9.0-beta.3
-
+       curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
     - name: Run Horusec Security Scan
       run: horusec generate && horusec start -p="./" --config-file-path=./horusec-config.json --project-path=./ --output-format=json --output-path=./output.json -e="true"
         
