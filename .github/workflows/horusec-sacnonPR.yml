@@ -12,18 +12,22 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v3
-      
+      - name: Docker version
+        run:
+          docker --version
+          docker info 
+          
       - name: Get Horusec CLI
         run: |
           curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh |  bash -s v2.9.0-beta.3
-
+      
 
       - name: Run Horusec Security Scan
         run: |
           horusec generate && \
           horusec start -p="./" --config-file-path=./horusec-config.json \
           --project-path=./ --output-format=json --output-path=./horusec-output.json -e="true"
-
+    
       - name: Upload Security Scan Report
         if: always() # Ensures the report is uploaded regardless of scan result
         uses: actions/upload-artifact@v3
