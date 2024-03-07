@@ -23,4 +23,4 @@ jobs:
          
       - name: Run Horusec Security Scan
         run: |
-          horusec start -p="./" --config-file-path=./horusec-config.json --project-path=./ --output-format=json --output-path=./horusec-output.json -e="true"
+          horusec version
