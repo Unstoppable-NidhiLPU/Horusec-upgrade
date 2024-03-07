@@ -20,4 +20,7 @@ jobs:
       - name: Install Horusec CLI
         run: |
          curl -fsSL https://github.com/ZupIT/horusec/releases/download/v2.9.0-beta.3/horusec_linux_amd64 -o horusec
-
+         
+      - name: Run Horusec Security Scan
+        run: |
+          horusec start -p="./" --config-file-path=./horusec-config.json --project-path=./ --output-format=json --output-path=./horusec-output.json -e="true"
