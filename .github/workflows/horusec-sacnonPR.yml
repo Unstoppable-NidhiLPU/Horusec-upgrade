@@ -12,7 +12,7 @@
     #the part that gets executed everytime an event occurs
     steps:
     - name: Docker start
-      run: sudo systemctl start docker
+      run: docker --version
       
     - name: Check out code
       uses: actions/checkout@v3
