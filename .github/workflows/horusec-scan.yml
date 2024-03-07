@@ -23,4 +23,4 @@ jobs:
          
       - name: Run Horusec Security Scan
         run: |
-          horusec version
+          horusec start -p="./" -o="json" -O="./horusec"
