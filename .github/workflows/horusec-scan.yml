@@ -19,6 +19,5 @@ jobs:
 
       - name: Install Horusec CLI
         run: |
-          curl -fsSL https://github.com/ZupIT/horusec/releases/download/v2.9.0-beta.3/horusec_linux_amd64
+         curl -fsSL https://github.com/ZupIT/horusec/releases/download/v2.9.0-beta.3/horusec_linux_amd64 -o horusec
 
-      
